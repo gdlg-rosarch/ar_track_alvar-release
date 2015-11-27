@@ -42,6 +42,7 @@
 #include <ar_track_alvar_msgs/AlvarMarker.h>
 #include <ar_track_alvar_msgs/AlvarMarkers.h>
 #include <tf/transform_listener.h>
+#include <tf/transform_broadcaster.h>
 #include <sensor_msgs/image_encodings.h>
 #include <pcl_conversions/pcl_conversions.h>
 #include <dynamic_reconfigure/server.h>
@@ -450,6 +451,7 @@ void getPointCloudCallback (const sensor_msgs::PointCloud2ConstPtr &msg)
 	  ar_pose_marker.id = id;
 	  arPoseMarkers_.markers.push_back (ar_pose_marker);	
 	}
+      arPoseMarkers_.header.stamp = image_msg->header.stamp;
       arMarkerPub_.publish (arPoseMarkers_);
     }
     catch (cv_bridge::Exception& e){
