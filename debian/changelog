@@ -1,0 +1,76 @@
+ros-jade-ar-track-alvar (0.5.3-0vivid) vivid; urgency=high
+
+  * [feat] New bool-Topic to enable/disable the marker detection (#70 <https://github.com/sniekum/ar_track_alvar/issues/70>)
+  * [feat] added public way to set intrinsicCalibration for Camera class
+  * [fix] not publishing marker that are facing in the same direction as the camera.
+  * [sys] removed duplicate code for image subscription
+  * Contributors: Nikolas Engelhard, Scott Niekum
+
+ -- Scott Niekum <sniekum@cs.umass.edu>  Mon, 01 Feb 2016 15:00:00 -0000
+
+ros-jade-ar-track-alvar (0.5.2-0vivid) vivid; urgency=high
+
+  * [fix] Move tf include from header to cpp files, fixes #66 <https://github.com/sniekum/ar_track_alvar/issues/66>
+    The header currently prevents us from re-using the library as a given library (because it pulls in tf2 which causes trouble). The include has been moved to the individual nodes which actually use a TransformBroadcaster.
+  * [fix] proper virtual destruction #63 <https://github.com/sniekum/ar_track_alvar/issues/63>.
+  * improve license information in package.xml (#58 <https://github.com/sniekum/ar_track_alvar/issues/58>)
+  * Added time stamp to header (#57 <https://github.com/sniekum/ar_track_alvar/issues/57>)
+    Previously, each pose had a timestamp, but the whole message did not. By including the timestamp for the whole message, it is now possible to use the results of the ar_pose_marker topic with other messages using message_filters::Synchronizer.
+  * Contributors: Alex Henning, Bener Suay, Lukas Bulwahn, Scott Niekum, Tim Niemueller, Isaac I. Y. Saito
+
+ -- Scott Niekum <sniekum@cs.umass.edu>  Thu, 26 Nov 2015 15:00:00 -0000
+
+ros-jade-ar-track-alvar (0.5.1-0vivid) vivid; urgency=high
+
+  * Remove meta pkg; ar_track_alvar is 'unary stack' so no need for the meta pkg.
+  * Contributors: Scott Niekum, Isaac IY Saito
+
+ -- Scott Niekum <sniekum@cs.umass.edu>  Mon, 13 Apr 2015 15:00:00 -0000
+
+ros-jade-ar-track-alvar (0.5.0-0vivid) vivid; urgency=high
+
+  * move README to root directory
+  * Merge remote-tracking branch 'origin/hydro-devel' into indigo-devel
+  * ar_track_alvar package uses ar_track_alvar_msgs
+  * restructuring packages. Separate out the message package.
+  * Contributors: Jihoon Lee
+
+ -- Scott Niekum <sniekum@cs.umass.edu>  Tue, 24 Jun 2014 15:00:00 -0000
+
+ros-jade-ar-track-alvar (0.4.1-0vivid) vivid; urgency=high
+
+
+
+ -- Scott Niekum <sniekum@cs.umass.edu>  Wed, 27 Nov 2013 15:00:00 -0000
+
+ros-jade-ar-track-alvar (0.3.3-0vivid) vivid; urgency=high
+
+
+
+ -- Scott Niekum <sniekum@cs.umass.edu>  Thu, 21 Feb 2013 15:00:00 -0000
+
+ros-jade-ar-track-alvar (0.3.2-0vivid) vivid; urgency=high
+
+
+
+ -- Scott Niekum <sniekum@cs.umass.edu>  Sun, 17 Feb 2013 15:00:00 -0000
+
+ros-jade-ar-track-alvar (0.3.1-0vivid) vivid; urgency=high
+
+
+
+ -- Scott Niekum <sniekum@cs.umass.edu>  Wed, 13 Feb 2013 15:00:00 -0000
+
+ros-jade-ar-track-alvar (0.3.0-0vivid) vivid; urgency=high
+
+
+
+ -- Scott Niekum <sniekum@cs.umass.edu>  Wed, 16 Jan 2013 15:00:00 -0000
+
+ros-jade-ar-track-alvar (0.2.0-0vivid) vivid; urgency=high
+
+
+
+ -- Scott Niekum <sniekum@cs.umass.edu>  Tue, 07 Aug 2012 15:00:00 -0000
+
+
