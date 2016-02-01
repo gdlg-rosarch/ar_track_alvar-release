@@ -41,7 +41,6 @@
 #include <ros/package.h>
 #include <ros/console.h>
 #include <geometry_msgs/TransformStamped.h>
-#include <tf/transform_broadcaster.h>
 #include <image_transport/image_transport.h>
 #include <sensor_msgs/CameraInfo.h>
 #include <visualization_msgs/Marker.h>
@@ -145,6 +144,9 @@ public:
 	/** \brief Constructor */
 	Camera();
 	Camera(ros::NodeHandle & n, std::string cam_info_topic);
+
+	/** Sets the intrinsic calibration */
+	void SetCameraInfo(const sensor_msgs::CameraInfo& camInfo);
 
 	/** \brief Get x-direction FOV in radians */
 	double GetFovX() {
