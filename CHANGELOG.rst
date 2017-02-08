@@ -2,28 +2,22 @@
 Changelog for package ar_track_alvar
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-0.6.2 (2017-02-07)
+0.5.5 (2017-02-07)
 ------------------
 * [fix] Marker no longer recognized `#93 <https://github.com/sniekum/ar_track_alvar/issues/93>`_
 * [fix] add install rule for bundles folder; fixes `#88 <https://github.com/sniekum/ar_track_alvar/issues/88>`_
-* [fix] Shutdown camera info sub after called
-* [enhancement] add mark_resolution and mark_marge as input option
 * [enhancement] individualMarkers: replace cout with ROS_DEBUG_STREAM (`#101 <https://github.com/sniekum/ar_track_alvar/issues/101>`_)
-* Contributors: Alex Reimann, Hans-Joachim Krauch, Isaac I.Y. Saito, TORK Developer 534
+* Contributors: Hans-Joachim Krauch, Isaac I.Y. Saito, TORK Developer 534
 
-0.6.1 (2016-06-08)
+0.5.4 (2016-09-26)
 ------------------
-* New parameter -array to create an array of markers `#85 <https://github.com/sniekum/ar_track_alvar/issues/85>`_ from 130s/kinetic/add_60
-* Fix build for Kinetic by adding missing dependencies on gencfg `#84 <https://github.com/sniekum/ar_track_alvar/issues/84>`_ from 130s/kinetic/fix_buildfarm
-  
-* [sys] Add a maintainer to receive notification from ros buildfarm.
-* Contributors: Jackie Kay, Mehdi, Isaac I.Y. Saito
-
-0.6.0 (2016-06-01)
-------------------
-* Made compatible to ROS-Kinetic-Kame `#80 <https://github.com/sniekum/ar_track_alvar/issues/80>`_
-* [Travis CI] Add ROS Kinetic support. Add Prerelease Test on Travis `#79 <https://github.com/sniekum/ar_track_alvar/issues/79>`_
-* Contributors: Sepehr MohaimenianPour, Isaac I.Y. Saito
+* [fix] Shutdown camera info sub after called
+  Disable camera info subscription after receiving the info.
+  This stops e. g. Asus Xtion from having an active subscription to the RGB image stream and thus saving CPU.
+* [capability] add mark_resolution and mark_marge as input option
+* [capability] New parameter -array to create an array of markers `#83 <https://github.com/sniekum/ar_track_alvar/issues/83>`_
+* [maintenance] Add a maintainer to receive notification from ros buildfarm.
+* Contributors: AlexReimann, Isaac I.Y. Saito, Mehdi, Tokyo Opensource Robotics Developer 534
 
 0.5.3 (2016-02-02)
 ------------------
