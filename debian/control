@@ -1,0 +1,12 @@
+Source: ros-jade-ar-track-alvar
+Section: misc
+Priority: extra
+Maintainer: Scott Niekum <sniekum@cs.umass.edu>
+Build-Depends: debhelper (>= 9.0.0), libtinyxml-dev, ros-jade-ar-track-alvar-msgs, ros-jade-catkin, ros-jade-cmake-modules, ros-jade-cv-bridge, ros-jade-dynamic-reconfigure, ros-jade-geometry-msgs, ros-jade-image-transport, ros-jade-message-generation, ros-jade-pcl-conversions, ros-jade-pcl-ros, ros-jade-resource-retriever, ros-jade-roscpp, ros-jade-rospy, ros-jade-sensor-msgs, ros-jade-std-msgs, ros-jade-tf, ros-jade-tf2, ros-jade-visualization-msgs
+Homepage: http://ros.org/wiki/ar_track_alvar
+Standards-Version: 3.9.2
+
+Package: ros-jade-ar-track-alvar
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, libtinyxml-dev, ros-jade-ar-track-alvar-msgs, ros-jade-cv-bridge, ros-jade-dynamic-reconfigure, ros-jade-geometry-msgs, ros-jade-image-transport, ros-jade-message-runtime, ros-jade-pcl-conversions, ros-jade-pcl-ros, ros-jade-resource-retriever, ros-jade-roscpp, ros-jade-rospy, ros-jade-sensor-msgs, ros-jade-std-msgs, ros-jade-tf, ros-jade-tf2, ros-jade-visualization-msgs
+Description: This package is a ROS wrapper for Alvar, an open source AR tag tracking library.
