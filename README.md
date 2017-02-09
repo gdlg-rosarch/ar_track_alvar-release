@@ -1,3 +1,26 @@
+## ar_track_alvar (indigo) - 0.5.6-0
+
+The packages in the `ar_track_alvar` repository were released into the `indigo` distro by running `/usr/bin/bloom-release --rosdistro indigo --track indigo ar_track_alvar` on `Thu, 09 Feb 2017 10:44:19 -0000`
+
+The `ar_track_alvar` package was released.
+
+Version of package(s) in repository `ar_track_alvar`:
+
+- upstream repository: https://github.com/sniekum/ar_track_alvar
+- release repository: https://github.com/ros-gbp/ar_track_alvar-release.git
+- rosdistro version: `0.5.5-0`
+- old version: `0.5.5-0`
+- new version: `0.5.6-0`
+
+Versions of tools used:
+
+- bloom version: `0.5.23`
+- catkin_pkg version: `0.2.10`
+- rosdep version: `0.11.5`
+- rosdistro version: `0.5.0`
+- vcstools version: `0.1.39`
+
+
 ## ar_track_alvar (jade) - 0.5.5-0
 
 The packages in the `ar_track_alvar` repository were released into the `jade` distro by running `/usr/bin/bloom-release --rosdistro jade --track jade ar_track_alvar` on `Wed, 08 Feb 2017 08:22:19 -0000`
