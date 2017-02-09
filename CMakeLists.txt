@@ -24,9 +24,22 @@ find_package(catkin COMPONENTS
         cmake_modules
         REQUIRED)
 
-find_package(Eigen REQUIRED)
+find_package(Eigen3 REQUIRED)
 find_package(OpenCV REQUIRED)
 find_package(TinyXML REQUIRED)
+
+include(CheckCXXCompilerFlag)
+CHECK_CXX_COMPILER_FLAG("-std=c++11" COMPILER_SUPPORTS_CXX11)
+CHECK_CXX_COMPILER_FLAG("-std=c++0x" COMPILER_SUPPORTS_CXX0X)
+if(COMPILER_SUPPORTS_CXX11)
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+elseif(COMPILER_SUPPORTS_CXX0X)
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++0x")
+else()
+        message(STATUS "The compiler ${CMAKE_CXX_COMPILER} has no C++11 support. Please use a different C++ compiler.")
+endif()
+
+cmake_policy(SET CMP0046 OLD)
 
 # dynamic reconfigure support
 generate_dynamic_reconfigure_options(cfg/Params.cfg)
@@ -110,11 +123,11 @@ set(ALVAR_TARGETS ar_track_alvar individualMarkers individualMarkersNoKinect tra
 
 add_executable(individualMarkers nodes/IndividualMarkers.cpp)
 target_link_libraries(individualMarkers ar_track_alvar kinect_filtering ${catkin_LIBRARIES})
-add_dependencies(individualMarkers ${PROJECT_NAME}_gencpp ${GENCPP_DEPS})
+add_dependencies(individualMarkers ${PROJECT_NAME}_gencpp ${GENCPP_DEPS} ${PROJECT_NAME}_gencfg)
 
 add_executable(individualMarkersNoKinect nodes/IndividualMarkersNoKinect.cpp)
 target_link_libraries(individualMarkersNoKinect ar_track_alvar ${catkin_LIBRARIES})
-add_dependencies(individualMarkersNoKinect ${PROJECT_NAME}_gencpp  ${GENCPP_DEPS})
+add_dependencies(individualMarkersNoKinect ${PROJECT_NAME}_gencpp  ${GENCPP_DEPS} ${PROJECT_NAME}_gencfg)
 
 add_executable(trainMarkerBundle nodes/TrainMarkerBundle.cpp)
 target_link_libraries(trainMarkerBundle ar_track_alvar ${catkin_LIBRARIES})
@@ -145,3 +158,26 @@ install(DIRECTORY include/${PROJECT_NAME}/
 install(DIRECTORY launch bundles
   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/
 )
+
+if (CATKIN_ENABLE_TESTING)
+  find_package(catkin REQUIRED COMPONENTS roslaunch rostest)
+  
+  file(GLOB LAUNCH_FILES launch/*.launch test/*.test)
+  foreach(LAUNCH_FILE ${LAUNCH_FILES})
+    roslaunch_add_file_check(${LAUNCH_FILE})
+  endforeach()
+  
+  catkin_download_test_data(
+    ${PROJECT_NAME}_4markers_tork.bag
+    http://download.ros.org/data/ar_track_alvar/ar_track_alvar_4markers_tork_2017-02-08-11-21-14.bag
+    # Workaround the issue http://answers.ros.org/question/253787/accessing-data-downloaded-via-catkin_download_test_data/
+    # by downloading into source folder.
+    #DESTINATION ${CATKIN_DEVEL_PREFIX}/${CATKIN_PACKAGE_SHARE_DESTINATION}/test
+    DESTINATION ${CMAKE_CURRENT_SOURCE_DIR}/test
+    MD5 627aa0316bbfe4334e06023d7c2b4087
+   )
+  add_rostest(test/marker_arg_config-basic.test DEPENDENCIES ${PROJECT_NAME}_4markers_tork.bag)
+  add_rostest(test/marker_arg_config-full.test DEPENDENCIES ${PROJECT_NAME}_4markers_tork.bag)
+  add_rostest(test/marker_param_config-basic.test DEPENDENCIES ${PROJECT_NAME}_4markers_tork.bag)
+  add_rostest(test/marker_param_config-full.test DEPENDENCIES ${PROJECT_NAME}_4markers_tork.bag)
+endif()
