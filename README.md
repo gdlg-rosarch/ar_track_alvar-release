@@ -1,3 +1,29 @@
+## ar_track_alvar (kinetic) - 0.7.0-0
+
+The packages in the `ar_track_alvar` repository were released into the `kinetic` distro by running `/usr/bin/bloom-release --rosdistro kinetic --track kinetic ar_track_alvar` on `Wed, 26 Apr 2017 21:54:21 -0000`
+
+These packages were released:
+- `ar_track_alvar`
+- `ar_track_alvar_metapkg`
+- `ar_track_alvar_msgs`
+
+Version of package(s) in repository `ar_track_alvar`:
+
+- upstream repository: https://github.com/sniekum/ar_track_alvar
+- release repository: https://github.com/ros-gbp/ar_track_alvar-release.git
+- rosdistro version: `0.6.3-0`
+- old version: `0.6.2-0`
+- new version: `0.7.0-0`
+
+Versions of tools used:
+
+- bloom version: `0.5.26`
+- catkin_pkg version: `0.3.1`
+- rosdep version: `0.11.5`
+- rosdistro version: `0.6.2`
+- vcstools version: `0.1.39`
+
+
 ## ar_track_alvar (lunar) - 0.7.0-0
 
 The packages in the `ar_track_alvar` repository were released into the `lunar` distro by running `/usr/bin/bloom-release --rosdistro lunar --track lunar ar_track_alvar` on `Wed, 26 Apr 2017 21:19:24 -0000`
