@@ -2,6 +2,13 @@
 Changelog for package ar_track_alvar
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+0.7.1 (2017-06-14)
+------------------
+* [maintenance] Remove unnecessary metapkg.
+* [fix][build][CMakeLists] Prevent rosdep errors that only occur when running tests with catkin_make_isolated. See http://answers.ros.org/question/262558/buildfarm-missing-package-dependencies-pkg_namepackagexml/
+* [test] Relax tf test criteria `#39 <https://github.com/ros-perception/ar_track_alvar/pull/39>`_
+* Contributors: Isaac I.Y. Saito
+
 0.7.0 (2017-04-21)
 ------------------
 * Consolidate ar_track_alvar* packages into a single repo (`#120 <https://github.com/sniekum/ar_track_alvar/issues/120>`_)
