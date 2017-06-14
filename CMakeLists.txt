@@ -164,7 +164,7 @@ if (CATKIN_ENABLE_TESTING)
   
   file(GLOB LAUNCH_FILES launch/*.launch test/*.test)
   foreach(LAUNCH_FILE ${LAUNCH_FILES})
-    roslaunch_add_file_check(${LAUNCH_FILE})
+    roslaunch_add_file_check(${LAUNCH_FILE} USE_TEST_DEPENDENCIES)
   endforeach()
   
   catkin_download_test_data(
