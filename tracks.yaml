@@ -108,7 +108,7 @@ tracks:
     release_tag: :{version}
     ros_distro: kinetic
     vcs_type: git
-    vcs_uri: https://github.com/sniekum/ar_track_alvar
+    vcs_uri: https://github.com/ros-perception/ar_track_alvar
     version: :{auto}
   lunar:
     actions:
