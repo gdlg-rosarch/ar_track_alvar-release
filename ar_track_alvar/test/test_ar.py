@@ -34,6 +34,7 @@
 # ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 # POSSIBILITY OF SUCH DAMAGE.
 
+import numpy
 import math
 import unittest
 
@@ -78,7 +79,7 @@ class TestArAlvarRos(unittest.TestCase):
         # The values in this list are ordered in the marker's number. 
         tf_expected = [[[0.04464459977845401, 0.05341412598745035, 0.26796900627543024], [0.6726999185589797, 0.7391474391806558, -0.01739267319701629, -0.028868280906256056]],
                        [[-0.04805772245624329, 0.039528315926071665, 0.26775882622136327], [0.48207151562664247, 0.8758763282975102, -0.016363763970395625, -0.013414118615296202]],
-                       [[0.007233278235745441, 0.015615692018491452, 0.26619586686955365], [0.08546919545682985, 0.9959809257461487, -0.0001615529469785548, -0.02677659572186436]],
+                       [[0.007233278235745441, 0.015615692018491452, 0.26619586686955365], [0.08546919545682985, 0.9959809257461487, 0.00424040439, -0.02677659572186436]],
                        [[0.06223014382428272, 0.014613815037010106, 0.26226145707174475], [-0.46400320825216246, 0.8850390875261293, 0.032644264656690035, -0.018471282241381157]]]
         for i in range (0, len(tf_expected)):
             while not rospy.is_shutdown():
@@ -91,10 +92,13 @@ class TestArAlvarRos(unittest.TestCase):
                     continue
             # Compare each translation element (x, y, z) 
             for v_ret, v_expected in zip(trans, tf_expected[i][0]):
-                self.assertAlmostEqual(v_ret, v_expected, 2)
+                # Given that sigfig ignores the leading zero, we only compare the first sigfig.
+                numpy.testing.assert_approx_equal(
+                    v_ret, v_expected, significant=1)
             # Compare each orientation element (x, y, z, w) 
             for v_ret, v_expected in zip(rot, tf_expected[i][1]):
-                self.assertAlmostEqual(v_ret, v_expected, 2)
+                numpy.testing.assert_approx_equal(
+                    v_ret, v_expected, significant=1)
 
 if __name__ == '__main__':
     import rostest
